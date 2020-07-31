@@ -2,3 +2,12 @@ canvas {
     margin: auto;
     background-color: teal;
 }
+
+form {
+    text-align: center;
+}
+
+text {
+    font: helvetica;
+    font-size: small;
+}
