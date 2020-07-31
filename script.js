@@ -1,2 +1,13 @@
-var canvas = documet.getElementByById("gameCanvas");
+var canvas = document.getElementById("gameCanvas");
 
+const ground = Object.freeze({
+    name: 'ground'
+})
+
+
+
+
+
+const main = () => {
+
+}
