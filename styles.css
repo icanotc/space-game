@@ -1,0 +1,9 @@
+canvas {
+    margin: auto;
+    background-color: white;
+}
+
+button {
+    background-color: tomato;
+    margin: 0, auto;
+}
