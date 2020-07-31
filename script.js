@@ -5,13 +5,40 @@ const ground = Object.freeze({
 })
 
 
-class draw{
-    constructor()
+class draw {
 
+    rectangle(x, y, w, h, color){
+        this.fillstyle = color;
+        this.fillrect(x, y, w, h)
+    }
 
+}
+
+class Rectangle {
+
+    constructor(x, y, w, h, color){
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.color = color;
+        this.x = x;
+    }
+
+    intersect(block) {
+
+    }
+    render(draw){
+        
+    }
+}
+
+class Blocks extends Rectangle {
+    
 
 
 }
+
 
 
 const main = () => {
