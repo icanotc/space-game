@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <script defer src="login.js"></script>
+        <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+    </head>
 <h1 Enter Your character name></h1>
+<div id = "messageContainer">
 <form action="index.html" method="post">  
     <label>Character Name:</label><br>  
-    <input type="text" name="name"><br><br>  
-     <input type="submit">  
-       </form> 
+    <input id = "prompt" type="text" name="name"><br><br>  
+    <input type="submit">  
+</form> 
+</div>
 </html>

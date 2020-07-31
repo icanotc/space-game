@@ -1,13 +1,13 @@
 canvas {
     margin: auto;
-    background-color: teal;
+    background-color: gray;
 }
 
 form {
     text-align: center;
 }
 
-text {
-    font: helvetica;
+label {
+    font: arial;
     font-size: small;
 }
