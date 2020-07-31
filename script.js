@@ -1,4 +1,4 @@
-const canvas = document.getElementById("myCanvas");
+const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
 const testBlock = new Image();
@@ -6,34 +6,22 @@ testBlock.src = './blocks/test.png'
 
 
 class utils {
-    parsePosition()
+    parsePosition(blockPosition){
+        return blockPosition * 40;
+    }
 }
 
 class draw {
     picture(pX, pY, picture){
-        
+        x = parsePosition(pX);
+        y = parsePosition(pY);
+        ctx.drawImage(picture, x, y);
+
+
     }
 }
 
-class blocks {
 
-    constructor(x, y){
-        this.x = x;
-        this.y = y;
-        this.color = color;
-        this.x = x;
-    }
-
-    intersect(block) {
-        return this.x < block.x + block.w
-        && block.x < this.x + this.w
-        && this.y < block.y + block.h
-        && block.y < this.y + this.h;
-    }
-    render(draw){
-        draw.rectangle(this.x, this.y, this.w, this.h, this.picture)
-    }
-}
 
 document.addEventListener("keypress", function onEvent(event) {
     if (event.key === "ArrowLeft") {
@@ -49,8 +37,8 @@ document.addEventListener("keypress", function onEvent(event) {
         console.log(directions[2]);
     }
     else if (event.key === "ArrowDown") {
-     directions[3] = true;
-     console.log(directions[3]);
+        directions[3] = true;
+        console.log(directions[3]);
     } else {
         directions.forEach(element => {
             element = false;
@@ -61,5 +49,6 @@ document.addEventListener("keypress", function onEvent(event) {
 var directions = [false, false, false, false];
 
 const main = () => {
+    draw.picture(0, 0, testBlock);
 
-}
+} 
