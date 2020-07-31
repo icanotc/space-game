@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/icanotc/space-game#readme",
   "dependencies": {
-    "planck-js": "^0.3.20",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {

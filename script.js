@@ -1,5 +1,6 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
+var fs = require("fs");
 
 
 var testBlock = new Image();
@@ -11,16 +12,14 @@ class MathStuff {
     }
 }
 
-class Draw {
-    static picture(pX, pY, picture){
-        var x = MathStuff.parsePosition(pX);
-        var y = MathStuff.parsePosition(pY);
-        window.onload = function() {
-            ctx.drawImage(testBlock, 0, 0);
-        }
-
-    }
+function initMap(){
+    var fs = require("fs");
+    fs.readFile("./map.txt", function(data){
+        var items = data.split("\r\n").map(function(el){ return el.split(" ");});
+        console.log(items);
+    });
 }
+
 
 document.addEventListener("keypress", function onEvent(event) {
     if (event.key === "Left") {
