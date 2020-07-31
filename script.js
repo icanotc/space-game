@@ -1,2 +1,2 @@
-var canvas = documet.getElementByById("gameCanvas");
+var canvas = document.getElementByById("gameCanvas");
 
