@@ -5,7 +5,13 @@ const ground = Object.freeze({
 })
 
 
+class draw{
+    constructor()
 
+
+
+
+}
 
 
 const main = () => {
