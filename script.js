@@ -1,4 +1,4 @@
-const canvas = document.getElementById("myCanvas");
+const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
 const testBlock = new Image();
@@ -6,12 +6,17 @@ testBlock.src = './blocks/test.png'
 
 
 class utils {
-    parsePosition()
+    parsePosition(blockPosition){
+        return blockPosition * 40;
+    }
 }
 
 class draw {
     picture(pX, pY, picture){
-        
+        x = parsePosition(pX);
+        y = parsePosition(pY);
+        ctx.drawImage(picture, x, y);
+
     }
 }
 
@@ -38,5 +43,5 @@ class blocks {
 
 
 const main = () => {
-
+    draw.picture(0, 0, testBlock);
 }
