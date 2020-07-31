@@ -4,10 +4,6 @@ const ctx = canvas.getContext("2d");
 
 var testBlock = new Image();
 testBlock.src = 'blocks/test.png'
-window.onload = function() {
-    ctx.drawImage(testBlock, 0, 0);
-}
-
 
 class MathStuff {
     static parsePosition(blockPosition){
@@ -19,8 +15,9 @@ class Draw {
     static picture(pX, pY, picture){
         var x = MathStuff.parsePosition(pX);
         var y = MathStuff.parsePosition(pY);
-        ctx.drawImage(testBlock, x, y);
-
+        window.onload = function() {
+            ctx.drawImage(testBlock, 0, 0);
+        }
 
     }
 }
