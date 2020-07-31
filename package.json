@@ -1,0 +1,22 @@
+{
+  "name": "space-game",
+  "version": "1.0.0",
+  "description": "a very basic space game",
+  "main": "index.js",
+  "scripts": {
+    "test": "devStart"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/icanotc/space-game.git"
+  },
+  "keywords": [
+    "space"
+  ],
+  "author": "vincent",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/icanotc/space-game/issues"
+  },
+  "homepage": "https://github.com/icanotc/space-game#readme"
+}
