@@ -1,42 +1,38 @@
-var canvas = document.getElementById("space");
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
 
-const ground = Object.freeze({
-    name: 'ground'
-})
+const testBlock = new Image();
+testBlock.src = './blocks/test.png'
 
 
-class draw {
-
-    rectangle(x, y, w, h, color){
-        this.fillstyle = color;
-        this.fillrect(x, y, w, h)
-    }
-
+class utils {
+    parsePosition()
 }
 
-class Rectangle {
+class draw {
+    picture(pX, pY, picture){
+        
+    }
+}
 
-    constructor(x, y, w, h, color){
+class blocks {
+
+    constructor(x, y){
         this.x = x;
         this.y = y;
-        this.w = w;
-        this.h = h;
         this.color = color;
         this.x = x;
     }
 
     intersect(block) {
-
+        return this.x < block.x + block.w
+        && block.x < this.x + this.w
+        && this.y < block.y + block.h
+        && block.y < this.y + this.h;
     }
     render(draw){
-        
+        draw.rectangle(this.x, this.y, this.w, this.h, this.picture)
     }
-}
-
-class Blocks extends Rectangle {
-    
-
-
 }
 
 
