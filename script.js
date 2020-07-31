@@ -30,7 +30,7 @@ document.addEventListener("keypress", function onEvent(event) {
     }
     else if (event.key === "ArrowRight") {
         directions[1] = true;
-        console.log(directions[]);
+        console.log(directions[1]);
     }
     else if (event.key === "ArrowUp") {
         directions[2] = true;
