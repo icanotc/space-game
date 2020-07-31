@@ -1,42 +1,44 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
-const testBlock = new Image();
-testBlock.src = './blocks/test.png'
+
+var testBlock = new Image();
+testBlock.src = 'blocks/test.png'
+window.onload = function() {
+    ctx.drawImage(testBlock, 0, 0);
+}
 
 
-class utils {
-    parsePosition(blockPosition){
+class MathStuff {
+    static parsePosition(blockPosition){
         return blockPosition * 40;
     }
 }
 
-class draw {
-    picture(pX, pY, picture){
-        x = parsePosition(pX);
-        y = parsePosition(pY);
-        ctx.drawImage(picture, x, y);
+class Draw {
+    static picture(pX, pY, picture){
+        var x = MathStuff.parsePosition(pX);
+        var y = MathStuff.parsePosition(pY);
+        ctx.drawImage(testBlock, x, y);
 
 
     }
 }
 
-
-
 document.addEventListener("keypress", function onEvent(event) {
-    if (event.key === "ArrowLeft") {
+    if (event.key === "Left") {
         directions[0] = true;
         console.log(directions[0]);
     }
-    else if (event.key === "ArrowRight") {
+    else if (event.key === "Right") {
         directions[1] = true;
         console.log(directions[1]);
     }
-    else if (event.key === "ArrowUp") {
+    else if (event.key === "Up") {
         directions[2] = true;
         console.log(directions[2]);
     }
-    else if (event.key === "ArrowDown") {
+    else if (event.key === "Down") {
         directions[3] = true;
         console.log(directions[3]);
     } else {
@@ -49,6 +51,8 @@ document.addEventListener("keypress", function onEvent(event) {
 var directions = [false, false, false, false];
 
 const main = () => {
-    draw.picture(0, 0, testBlock);
+    Draw.picture(500, 500, "testBlock");
+}
 
-} 
+
+main();
