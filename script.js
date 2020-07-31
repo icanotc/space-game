@@ -1,4 +1,4 @@
-var canvas = document.getElementById("gameCanvas");
+var canvas = document.getElementById("space");
 
 const ground = Object.freeze({
     name: 'ground'
