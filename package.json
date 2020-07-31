@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/icanotc/space-game/issues"
   },
-  "homepage": "https://github.com/icanotc/space-game#readme"
+  "homepage": "https://github.com/icanotc/space-game#readme",
+  "dependencies": {
+    "socket.io": "^2.3.0"
+  }
 }
