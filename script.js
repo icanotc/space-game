@@ -5,6 +5,12 @@ const ctx = canvas.getContext("2d");
 var testBlock = new Image();
 testBlock.src = 'blocks/test.png'
 
+var playerImage = new Image();
+playerImage.src = 'player/player.png'
+
+var playerWalkingImage = new Image();
+playerWalkingImage.src = 'player/player_walking.png'
+
 class MathStuff {
     static parsePosition(blockPosition){
         return blockPosition * 40;
@@ -18,21 +24,7 @@ var player = {
     y_v: 0,
     jump : true,
     height: 80,
-    width: 40,
-    gravity: 0.5,
-    gravitySpeed: 0,
-    hitBottom: function() {
-        var bottom = canvas.height - this.height;
-        if (this.y > bottom) {
-            this.y = bottom;
-            this.gravitySpeed = 0;
-        }
-    },
-    updatePos: function() {
-        this.gravitySpeed += this.gravity;
-        this.x += this.x_v;
-        this.y += this.y_v + this.gravitySpeed; 
-    }
+    width: 40
 };
 
 var keys = {
@@ -119,9 +111,7 @@ function keyup(e) {
 } 
 
 function loop(){
-    
-    
-
+    ctx.drawImage(playerImage, 500, 500);
 
 }
 
