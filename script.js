@@ -131,6 +131,11 @@ function loop(){
     } else {
         ctx.drawImage(playerImage, player.x, player.y);
     }
+
+    if (i > -1){
+        player.jump = false;
+        player.y = platforms[i].y;    
+    }
 }
 
 const main = () => {
