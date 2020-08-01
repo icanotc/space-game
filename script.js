@@ -85,10 +85,10 @@ document.addEventListener('keydown', (event) => {
     if(event.keyCode == 37) {
         keys.left = true;
     }
-    // 37 is the code for the up arrow key
+    // 38 is the code for the up arrow key
     if(event.keyCode == 38) {
-        if(player.jump == false) {
-            player.y_v = -10;
+        if(player.jump == true) {
+            player.y_v = 10;
         }
     }
     // 39 is the code for the right arrow key
@@ -123,24 +123,40 @@ function loop(){
         player.y_v += gravity;
     }
     player.jump = true;
-    player.x = player.x + player.x_v;
-    player.y = player.y + player.y_v;
-    console.log(player.y_v)
-    console.log(player.y)
+    if(keys.left) {
+        player.x_v = -2.5;
+    }
+    if(keys.right) {
+        player.x_v = 2.5;
+    }
+    player.y += player.y_v;
+    player.x += player.x_v;
+    //console.log(player.y_v)
+    //console.log(player.y)
     if(player.x_v != 0 || player.y_v != 0 ) {
         ctx.drawImage(playerWalkingImage, player.x, player.y);
     } else {
         ctx.drawImage(playerImage, player.x, player.y);
     }
-
-    createPlats(10);
+    
+    for (var loop = 0; loop < 10; loop++){
+        compareToPlats(loop);
+    }
 }
+
+
 var platforms = []
+var playerState = -1;
 
 function compareToPlats(platNumbers){
-    if(platforms[platNumbers].x < player.x && player.x < platforms[platNumbers].x + platforms[platNumbers].width &&
-        platforms[platNumbers].y < player.y && player.y < platforms[platNumbers].y + platforms[platNumbers].height){
-            return true;
+    if(platforms[platNumbers].x < player.x + 40 && player.x < platforms[platNumbers].x &&
+        platforms[platNumbers].y < player.y + 80 && player.y < platforms[platNumbers].y + 40){
+        playerState = platNumbers;
+        console.log(platforms[platNumbers].x);    
+    }
+    if (playerState > -1){
+        player.jump = false;
+        player.y = platforms[playerState].y - 80;
     }
 }
 
@@ -149,25 +165,19 @@ function createPlats(num){
         platforms.push(
             {
             x: Math.floor(Math.random() * (1500 - 0 + 1)),
-            y: Math.floor(Math.random() * (880 - 0 + 1)),
-
+            y: Math.floor(Math.random() * (850 - 0 + 1)),
             }
-            
         );
         //console.log(platforms);
     }
     for(i = 0; i < num; i++) {
         ctx.fillRect(platforms[i].x, platforms[i].y, 160, 40);
-        console.log(platforms[i].x + 'fuck')
+        // console.log(platforms[i].x + 'fuck')
     }
-    
 }
-
-
-console.log(platforms);
-
-
+//console.log(platforms);
 const main = () => {
+    createPlats(10);
     //initMap();
     setInterval(loop,20);
 }
