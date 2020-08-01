@@ -37,7 +37,6 @@ function initMap(){
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]
     ]
 
-    
     window.onload = function() {
         for(var bruh = 0; bruh < 40; bruh++){
             for(var lOop = 0; lOop < 22; lOop++){
@@ -82,11 +81,10 @@ document.addEventListener("keypress", function onEvent(event) {
     }
 });
 
+
 var directions = [false, false, false, false];
 
 const main = () => {
     initMap()
 }
-
-
 main();
