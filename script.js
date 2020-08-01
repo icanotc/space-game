@@ -22,7 +22,7 @@ var player = {
     y: 200,
     x_v: 0,
     y_v: 0,
-    jump : true,
+    jump : false,
     height: 80,
     width: 40
 };
@@ -122,7 +122,9 @@ function loop(){
     } else {
         player.y_v += gravity;
     }
-    player.jump = true;
+    if(keys.up) {
+        player.jump = true; 
+    }
     if(keys.left) {
         player.x_v = -2.5;
     }
@@ -170,7 +172,15 @@ function createPlats(num){
         );
         //console.log(platforms);
     }
-    for(i = 0; i < num; i++) {
+
+    platforms.push(
+            {
+            x: 200,
+            y: 200+player.height,
+            }
+    )
+
+    for(i = 0; i < num+1; i++) {
         ctx.fillRect(platforms[i].x, platforms[i].y, 160, 40);
         // console.log(platforms[i].x + 'fuck')
     }
