@@ -85,10 +85,10 @@ document.addEventListener('keydown', (event) => {
     if(event.keyCode == 37) {
         keys.left = true;
     }
-    // 37 is the code for the up arrow key
+    // 38 is the code for the up arrow key
     if(event.keyCode == 38) {
-        if(player.jump == false) {
-            player.y_v = -10;
+        if(player.jump == true) {
+            player.y_v = 10;
         }
     }
     // 39 is the code for the right arrow key
@@ -138,7 +138,7 @@ function loop(){
     } else {
         ctx.drawImage(playerImage, player.x, player.y);
     }
-    createPlats(10);
+    
     for (var loop = 0; loop < 10; loop++){
         compareToPlats(loop);
     }
@@ -149,7 +149,7 @@ var platforms = []
 var playerState = -1;
 
 function compareToPlats(platNumbers){
-    if(platforms[platNumbers].x < player.x + 40 && player.x < platforms[platNumbers].x + 160 &&
+    if(platforms[platNumbers].x < player.x + 40 && player.x < platforms[platNumbers].x &&
         platforms[platNumbers].y < player.y + 80 && player.y < platforms[platNumbers].y + 40){
         playerState = platNumbers;
         console.log(platforms[platNumbers].x);    
@@ -158,7 +158,6 @@ function compareToPlats(platNumbers){
         player.jump = false;
         player.y = platforms[playerState].y - 80;
     }
-    player.jump = false;
 }
 
 function createPlats(num){
@@ -178,6 +177,7 @@ function createPlats(num){
 }
 //console.log(platforms);
 const main = () => {
+    createPlats(10);
     //initMap();
     setInterval(loop,20);
 }
