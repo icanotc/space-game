@@ -114,9 +114,13 @@ document.addEventListener('keyup', (event) => {
 
 function loop(){
     initMap()
-    ctx.drawImage(playerImage, player.x, player.y);
     player.x = player.x+player.x_v;
     player.y = player.y+player.y_v;
+    if(player.x_v != 0 || player.y_v != 0 ) {
+        ctx.drawImage(playerWalkingImage, player.x, player.y);
+    } else {
+        ctx.drawImage(playerImage, player.x, player.y);
+    }
 }
 
 const main = () => {
