@@ -80,45 +80,45 @@ function initMap(){
 }
 
 
-function keydown(e) {
+document.addEventListener('keydown', (event) => {
     // 37 is the code for the left arrow key
-    if(e.keyCode == 37) {
+    if(event.keyCode == 37) {
         keys.left = true;
     }
     // 37 is the code for the up arrow key
-    if(e.keyCode == 38) {
+    if(event.keyCode == 38) {
         if(player.jump == false) {
             player.y_v = -10;
         }
     }
     // 39 is the code for the right arrow key
-    if(e.keyCode == 39) {
+    if(event.keyCode == 39) {
         keys.right = true;
     }
-}
-function keyup(e) {
-    if(e.keyCode == 37) {
+});
+document.addEventListener('keyup', (event) => {
+    console.log(event.keyCode);
+    if(event.keyCode == 37) {
         keys.left = false;
     }
-    if(e.keyCode == 38) {
+    if(event.keyCode == 38) {
         if(player.y_v < -2) {
         player.y_v = -3;
+        
         }
     }
-    if(e.keyCode == 39) {
+    if(event.keyCode == 39) {
         keys.right = false;
     }
-} 
+});
 
 function loop(){
-    ctx.drawImage(playerImage, 500, 500);
-
+    initMap()
+    ctx.drawImage(playerImage, player.x, player.y);
 }
 
 const main = () => {
-    initMap()
-    document.addEventListener("keydown",keydown);
-    document.addEventListener("keyup",keyup);
+    initMap();
     setInterval(loop,20);
 }
 
