@@ -129,8 +129,8 @@ function loop(){
     if(keys.right) {
         player.x_v = 2.5;
     }
-    player.x = player.x + player.x_v;
-    player.y = player.y + player.y_v;
+    player.y += player.y_v;
+    player.x += player.x_v;
     //console.log(player.y_v)
     //console.log(player.y)
     if(player.x_v != 0 || player.y_v != 0 ) {
@@ -142,8 +142,6 @@ function loop(){
     for (var loop = 0; loop < 10; loop++){
         compareToPlats(loop);
     }
-    
-
 }
 
 
@@ -151,15 +149,16 @@ var platforms = []
 var playerState = -1;
 
 function compareToPlats(platNumbers){
-    if(platforms[platNumbers].x < player.x && player.x < platforms[platNumbers].x + 160 &&
-        platforms[platNumbers].y < player.y && player.y < platforms[platNumbers].y + 40){
+    if(platforms[platNumbers].x < player.x + 40 && player.x < platforms[platNumbers].x + 160 &&
+        platforms[platNumbers].y < player.y + 80 && player.y < platforms[platNumbers].y + 40){
         playerState = platNumbers;
         console.log(platforms[platNumbers].x);    
     }
     if (playerState > -1){
         player.jump = false;
-        player.y = platforms[playerState].y;
+        player.y = platforms[playerState].y - 80;
     }
+    player.jump = false;
 }
 
 function createPlats(num){
@@ -176,11 +175,8 @@ function createPlats(num){
         ctx.fillRect(platforms[i].x, platforms[i].y, 160, 40);
         // console.log(platforms[i].x + 'fuck')
     }
-    
 }
-
 //console.log(platforms);
-
 const main = () => {
     //initMap();
     setInterval(loop,20);
