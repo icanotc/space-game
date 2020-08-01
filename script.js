@@ -123,6 +123,12 @@ function loop(){
         player.y_v += gravity;
     }
     player.jump = true;
+    if(keys.left) {
+        player.x_v = -2.5;
+    }
+    if(keys.right) {
+        player.x_v = 2.5;
+    }
     player.x = player.x + player.x_v;
     player.y = player.y + player.y_v;
     console.log(player.y_v)
@@ -136,11 +142,16 @@ function loop(){
     createPlats(10);
 }
 var platforms = []
+var playerState = -1;
 
 function compareToPlats(platNumbers){
     if(platforms[platNumbers].x < player.x && player.x < platforms[platNumbers].x + platforms[platNumbers].width &&
         platforms[platNumbers].y < player.y && player.y < platforms[platNumbers].y + platforms[platNumbers].height){
-            return true;
+            playerState = platNumbers;
+    }
+    if (playerState > -1){
+        player.jump = false;
+        player.y = platforms[playerState].y;
     }
 }
 
@@ -150,17 +161,14 @@ function createPlats(num){
             {
             x: Math.floor(Math.random() * (1500 - 0 + 1)),
             y: Math.floor(Math.random() * (880 - 0 + 1)),
-
             }
-            
         );
         //console.log(platforms);
     }
     for(i = 0; i < num; i++) {
         ctx.fillRect(platforms[i].x, platforms[i].y, 160, 40);
-        console.log(platforms[i].x + 'fuck')
+        // console.log(platforms[i].x + 'fuck')
     }
-    
 }
 
 
