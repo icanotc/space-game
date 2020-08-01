@@ -164,8 +164,8 @@ function createPlats(num){
     for(i = 0; i < num; i++) {
         platforms.push(
             {
-            x: Math.floor(Math.random() * (1500 - 0 + 1)),
-            y: Math.floor(Math.random() * (850 - 0 + 1)),
+            x: Math.floor(Math.random() * (1500 )),
+            y: Math.floor(Math.random() * (850 )),
             }
         );
         //console.log(platforms);
