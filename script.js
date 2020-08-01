@@ -111,11 +111,21 @@ document.addEventListener('keyup', (event) => {
         keys.right = false;
     }
 });
+var gravity = 0.5;
+var friction = 0.5;
 
 function loop(){
     initMap()
-    player.x = player.x+player.x_v;
-    player.y = player.y+player.y_v;
+    if(player.jump == false) {
+        player.x_v *= friction;
+    } else {
+        player.y_v += gravity;
+    }
+    player.jump = true;
+    player.x = player.x + player.x_v;
+    player.y = player.y + player.y_v;
+    console.log(player.y_v)
+    console.log(player.y)
     if(player.x_v != 0 || player.y_v != 0 ) {
         ctx.drawImage(playerWalkingImage, player.x, player.y);
     } else {
