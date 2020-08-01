@@ -18,7 +18,21 @@ var player = {
     y_v: 0,
     jump : true,
     height: 80,
-    width: 40
+    width: 40,
+    gravity: 0.5,
+    gravitySpeed: 0,
+    hitBottom: function() {
+        var bottom = canvas.height - this.height;
+        if (this.y > bottom) {
+            this.y = bottom;
+            this.gravitySpeed = 0;
+        }
+    },
+    updatePos: function() {
+        this.gravitySpeed += this.gravity;
+        this.x += this.x_v;
+        this.y += this.y_v + this.gravitySpeed; 
+    }
 };
 
 var keys = {
@@ -106,7 +120,7 @@ function keyup(e) {
 
 function loop(){
     
-
+    
 
 
 }
