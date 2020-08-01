@@ -58,33 +58,29 @@ function initMap(){
 }
 
 
-document.addEventListener("keypress", function onEvent(event) {
-    if (event.key === "Left") {
-        directions[0] = true;
-        console.log(directions[0]);
+function keydown(e) {
+    // 37 is the code for the left arrow key
+    if(e.keyCode == 37) {
+        keys.left = true;
     }
-    else if (event.key === "Right") {
-        directions[1] = true;
-        console.log(directions[1]);
+    // 37 is the code for the up arrow key
+    if(e.keyCode == 38) {
+        if(player.jump == false) {
+            player.y_v = -10;
+        }
     }
-    else if (event.key === "Up") {
-        directions[2] = true;
-        console.log(directions[2]);
+    // 39 is the code for the right arrow key
+    if(e.keyCode == 39) {
+        keys.right = true;
     }
-    else if (event.key === "Down") {
-        directions[3] = true;
-        console.log(directions[3]);
-    } else {
-        directions.forEach(element => {
-            element = false;
-        });
-    }
-});
+}
 
 
-var directions = [false, false, false, false];
 
 const main = () => {
     initMap()
 }
+
+
 main();
+
