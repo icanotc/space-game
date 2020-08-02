@@ -116,9 +116,8 @@ var gravity = 0.5;
 var friction = 0.5;
 
 function loop(){
-    ctx.fillStyle = "#FFFFFF"
-    ctx.fillRect(player.x, player.y, player.width, player.height);
-    ctx.fillStyle = "#000000"
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    createPlats(10);
     //initMap()
     if(player.jump == false) {
         player.x_v *= friction;
@@ -191,7 +190,7 @@ function createPlats(num){
 }
 //console.log(platforms);
 const main = () => {
-    createPlats(10);
+    
     //initMap();
     setInterval(loop,20);
 }
