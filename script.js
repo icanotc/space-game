@@ -155,7 +155,7 @@ function compareToPlats(platNumbers){
         platforms[platNumbers].y < player.y && player.y < platforms[platNumbers].y + 40){
         playerState = platNumbers;
         player.y = platforms[platNumbers].y;
-        player.y_v = 0;
+        player.y_v = -player.y_v*0.5;
         player.jump = false;
         
     }
