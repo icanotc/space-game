@@ -44,7 +44,7 @@ document.addEventListener('keydown', (event) => {
     }
     //up arrow key
     if (event.keyCode == 38) {
-        player.y_v = -20;
+        player.y_v = -10;
     }
     //right arrow key
     if (event.keyCode == 39) {
@@ -130,7 +130,7 @@ function createPlats(num) {
     }
 }
 const main = () => {
-    setInterval(loop, 20);
+    setInterval(loop, 40);
 }
 
 
