@@ -135,12 +135,12 @@ function loop(){
     // ctx.fillStyle("#FFFFFF");
     player.y += player.y_v;
     player.x += player.x_v;
-    //console.log(player.y_v)
-    //console.log(player.y)
-    if(player.x_v != 0 || player.y_v != 0 ) {
-        ctx.drawImage(playerWalkingImage, player.x, player.y);
+    console.log(player.y_v)
+    console.log(player.x_v)
+    if(player.x_v >= 0 || player.y_v >= 0 ) {
+        ctx.drawImage(playerWalkingImage, player.x, player.y - 80);
     } else {
-        ctx.drawImage(playerImage, player.x , player.y);
+        ctx.drawImage(playerImage, player.x , player.y - 80);
     }
     
 
@@ -151,12 +151,13 @@ var platforms = []
 var playerState = -1;
 
 function compareToPlats(platNumbers){
-    if(platforms[platNumbers].x < player.x  && player.x < platforms[platNumbers].x + 40 &&
-        platforms[platNumbers].y < player.y && player.y < platforms[platNumbers].y + 80){
+    if(platforms[platNumbers].x < player.x  && player.x < platforms[platNumbers].x + 160 &&
+        platforms[platNumbers].y < player.y && player.y < platforms[platNumbers].y + 40){
         playerState = platNumbers;
-        player.y = platforms[i].y - 80;  
+        player.y = platforms[platNumbers].y;
         player.y_v = 0;
-        console.log(platforms[platNumbers].x);    
+        player.jump = false;
+        
     }
 
 }
