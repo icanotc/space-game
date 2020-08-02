@@ -118,7 +118,7 @@ var friction = 0.5;
 function loop(){
     ctx.fillStyle = "#FFFFFF"
     ctx.fillRect(player.x, player.y, player.width, player.height);
-    ctx.fillStyle = "#000000"; 
+    ctx.fillStyle = "#000000"
     //initMap()
     if(player.jump == false) {
         player.x_v *= friction;
