@@ -116,6 +116,9 @@ var gravity = 0.5;
 var friction = 0.5;
 
 function loop(){
+    ctx.fillStyle("#000000");
+    ctx.fillRect(player.x+2.5, player.y, player.width, player.height);
+    ctx.fillStyle("#FFFFFF"); 
     //initMap()
     if(player.jump == false) {
         player.x_v *= friction;
@@ -131,6 +134,7 @@ function loop(){
     if(keys.right) {
         player.x_v = 2.5;
     }
+    // ctx.fillStyle("#FFFFFF");
     player.y += player.y_v;
     player.x += player.x_v;
     //console.log(player.y_v)
