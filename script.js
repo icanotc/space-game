@@ -22,7 +22,7 @@ var player = {
     y: 200,
     x_v: 0,
     y_v: 0,
-    jump : false,
+    jump : true,
     height: 80,
     width: 40
 };
@@ -87,9 +87,7 @@ document.addEventListener('keydown', (event) => {
     }
     // 38 is the code for the up arrow key
     if(event.keyCode == 38) {
-        if(player.jump == true) {
-            player.y_v = 10;
-        }
+        player.y_v = -10;
     }
     // 39 is the code for the right arrow key
     if(event.keyCode == 39) {
@@ -97,14 +95,13 @@ document.addEventListener('keydown', (event) => {
     }
 });
 document.addEventListener('keyup', (event) => {
-    console.log(event.keyCode);
+    //console.log(event.keyCode);
     if(event.keyCode == 37) {
         keys.left = false;
     }
     if(event.keyCode == 38) {
         if(player.y_v < -2) {
-        player.y_v = -3;
-        
+            player.y_v = -3;
         }
     }
     if(event.keyCode == 39) {
@@ -124,9 +121,11 @@ function loop(){
     } else {
         player.y_v += gravity;
     }
-    if(keys.up) {
-        player.jump = true; 
+    player.jump = true;
+    for (var loop = 0; loop < 10; loop++){
+        compareToPlats(loop);
     }
+
     if(keys.left) {
         player.x_v = -2.5;
     }
@@ -141,12 +140,10 @@ function loop(){
     if(player.x_v != 0 || player.y_v != 0 ) {
         ctx.drawImage(playerWalkingImage, player.x, player.y);
     } else {
-        ctx.drawImage(playerImage, player.x, player.y);
+        ctx.drawImage(playerImage, player.x , player.y);
     }
     
-    for (var loop = 0; loop < 10; loop++){
-        compareToPlats(loop);
-    }
+
 }
 
 
@@ -154,15 +151,14 @@ var platforms = []
 var playerState = -1;
 
 function compareToPlats(platNumbers){
-    if(platforms[platNumbers].x < player.x + 40 && player.x < platforms[platNumbers].x &&
-        platforms[platNumbers].y < player.y + 80 && player.y < platforms[platNumbers].y + 40){
+    if(platforms[platNumbers].x < player.x  && player.x < platforms[platNumbers].x + 40 &&
+        platforms[platNumbers].y < player.y && player.y < platforms[platNumbers].y + 80){
         playerState = platNumbers;
+        player.y = platforms[i].y - 80;  
+        player.y_v = 0;
         console.log(platforms[platNumbers].x);    
     }
-    if (playerState > -1){
-        player.jump = false;
-        player.y = platforms[playerState].y - 80;
-    }
+
 }
 
 function createPlats(num){
