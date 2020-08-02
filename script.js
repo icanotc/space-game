@@ -31,7 +31,11 @@ playerImage.src = 'player/player.png'
 var playerWalkingImage = new Image();
 playerWalkingImage.src = 'player/player_walking.png'
 
+var bg = new Image();
+bg.src = 'Space_Game_Background.png'
 
+var moonBlock = new Image();
+moonBlock.src = 'blocks/Space Blocks.png'
 
 document.addEventListener('keydown', (event) => {
     //left arrow key
@@ -64,8 +68,9 @@ document.addEventListener('keyup', (event) => {
 });
 
 function loop() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    createPlats(10);
+    ctx.drawImage(bg,0,0);
+    //ctx.clearRect(0, 0, canvas.width, canvas.height);
+    createPlats(20);
     //initMap()
     if (player.jump == false) {
         player.x_v *= friction;
@@ -118,10 +123,14 @@ function createPlats(num) {
     })
     for (i = 0; i < num + 1; i++) {
         ctx.fillRect(platforms[i].x, platforms[i].y, 160, 40);
+        for(ii = 0; ii < 4; ii++){
+            ctx.drawImage(moonBlock, platforms[i].x + ii*40, platforms[i].y);
+        }
+        
     }
 }
 const main = () => {
-    setInterval(loop, 20);
+    setInterval(loop, 40);
 }
 
 
