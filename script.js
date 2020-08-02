@@ -122,7 +122,7 @@ function loop(){
         player.y_v += gravity;
     }
     player.jump = true;
-    for (var loop = 0; loop < 10; loop++){
+    for (var loop = 0; loop < 11; loop++){
         compareToPlats(loop);
     }
 
