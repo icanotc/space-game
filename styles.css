@@ -11,3 +11,7 @@ label {
     font: arial;
     font-size: small;
 }
+
+button {
+    text-align: center;
+}
