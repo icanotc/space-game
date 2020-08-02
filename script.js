@@ -11,7 +11,7 @@ var player = {
     y: 200,
     x_v: 0,
     y_v: 0,
-    jump : true,
+    jump: true,
     height: 80,
     width: 40
 };
@@ -35,52 +35,52 @@ playerWalkingImage.src = 'player/player_walking.png'
 
 document.addEventListener('keydown', (event) => {
     //left arrow key
-    if(event.keyCode == 37) {
+    if (event.keyCode == 37) {
         keys.left = true;
     }
     //up arrow key
-    if(event.keyCode == 38) {
+    if (event.keyCode == 38) {
         player.y_v = -10;
     }
     //right arrow key
-    if(event.keyCode == 39) {
+    if (event.keyCode == 39) {
         keys.right = true;
     }
 });
 
 document.addEventListener('keyup', (event) => {
     //console.log(event.keyCode);
-    if(event.keyCode == 37) {
+    if (event.keyCode == 37) {
         keys.left = false;
     }
-    if(event.keyCode == 38) {
-        if(player.y_v < -2) {
+    if (event.keyCode == 38) {
+        if (player.y_v < -2) {
             player.y_v = -3;
         }
     }
-    if(event.keyCode == 39) {
+    if (event.keyCode == 39) {
         keys.right = false;
     }
 });
 
-function loop(){
+function loop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     createPlats(10);
     //initMap()
-    if(player.jump == false) {
+    if (player.jump == false) {
         player.x_v *= friction;
     } else {
         player.y_v += gravity;
     }
     player.jump = true;
-    for (var loop = 0; loop < 11; loop++){
+    for (var loop = 0; loop < 11; loop++) {
         compareToPlats(loop);
     }
 
-    if(keys.left) {
+    if (keys.left) {
         player.x_v = -2.5;
     }
-    if(keys.right) {
+    if (keys.right) {
         player.x_v = 2.5;
     }
     // ctx.fillStyle("#FFFFFF");
@@ -88,18 +88,16 @@ function loop(){
     player.x += player.x_v;
     console.log(player.y_v)
     console.log(player.x_v)
-    if(player.x_v >= 0 || player.y_v >= 0 ) {
+    if (player.x_v >= 0 || player.y_v >= 0) {
         ctx.drawImage(playerWalkingImage, player.x, player.y - 80);
     } else {
-        ctx.drawImage(playerImage, player.x , player.y - 80);
+        ctx.drawImage(playerImage, player.x, player.y - 80);
     }
-    
-
 }
 
-function compareToPlats(platNumbers){
-    if(platforms[platNumbers].x < player.x  && player.x < platforms[platNumbers].x + 160 &&
-        platforms[platNumbers].y < player.y && player.y < platforms[platNumbers].y + 40){
+function compareToPlats(platNumbers) {
+    if (platforms[platNumbers].x < player.x && player.x < platforms[platNumbers].x + 160 &&
+        platforms[platNumbers].y < player.y && player.y < platforms[platNumbers].y + 40) {
         playerState = platNumbers;
         player.y = platforms[platNumbers].y;
         player.y_v = 0;
@@ -107,27 +105,24 @@ function compareToPlats(platNumbers){
     }
 }
 
-function createPlats(num){
-    for(i = 0; i < num; i++) {
+function createPlats(num) {
+    for (i = 0; i < num; i++) {
         platforms.push({
-            x: Math.floor(Math.random() * (1500 )),
-            y: Math.floor(Math.random() * (850 )),
-            }
-        );
+            x: Math.floor(Math.random() * (1500)),
+            y: Math.floor(Math.random() * (850)),
+        });
     }
     platforms.push({
         x: 200,
-        y: 200+player.height,
-        }
-    )
-    for(i = 0; i < num+1; i++) {
+        y: 200 + player.height,
+    })
+    for (i = 0; i < num + 1; i++) {
         ctx.fillRect(platforms[i].x, platforms[i].y, 160, 40);
     }
 }
 const main = () => {
-    setInterval(loop,20);
+    setInterval(loop, 20);
 }
 
 
 main();
-
