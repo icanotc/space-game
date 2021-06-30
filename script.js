@@ -75,7 +75,7 @@ function loop() {
     if (player.jump == false) {
         player.x_v *= friction;
     } else {
-        player.y_v += gravity;
+        player.y_v *= gravity;
     }
     player.jump = true;
     for (var loop = 0; loop < 11; loop++) {
@@ -93,7 +93,7 @@ function loop() {
     player.x += player.x_v;
     console.log(player.y_v)
     console.log(player.x_v)
-    if (player.x_v >= 0 || player.y_v >= 0) {
+    if (player.x_v > 0 || player.y_v > 0) {
         ctx.drawImage(playerWalkingImage, player.x, player.y - 80);
     } else {
         ctx.drawImage(playerImage, player.x, player.y - 80);
@@ -101,8 +101,8 @@ function loop() {
 }
 
 function compareToPlats(platNumbers) {
-    if (platforms[platNumbers].x < player.x && player.x < platforms[platNumbers].x + 160 &&
-        platforms[platNumbers].y < player.y && player.y < platforms[platNumbers].y + 40) {
+    if (platforms[platNumbers].x <= player.x && player.x <= platforms[platNumbers].x + 160 &&
+        platforms[platNumbers].y <= player.y && player.y <= platforms[platNumbers].y + 40) {
         playerState = platNumbers;
         player.y = platforms[platNumbers].y;
         player.y_v = -player.y_v*0.2;
