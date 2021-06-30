@@ -22,9 +22,6 @@ var keys = {
     up: false,
 };
 
-var testBlock = new Image();
-testBlock.src = 'blocks/test.png'
-
 var playerImage = new Image();
 playerImage.src = 'player/player.png'
 
@@ -78,7 +75,7 @@ function loop() {
         player.y_v *= gravity;
     }
     player.jump = true;
-    for (var loop = 0; loop < 11; loop++) {
+    for (var loop = 0; loop < 20; loop++) {
         compareToPlats(loop);
     }
 
@@ -101,8 +98,8 @@ function loop() {
 }
 
 function compareToPlats(platNumbers) {
-    if (platforms[platNumbers].x <= player.x && player.x <= platforms[platNumbers].x + 160 &&
-        platforms[platNumbers].y <= player.y && player.y <= platforms[platNumbers].y + 40) {
+    if ((platforms[platNumbers].x <= player.x && player.x <= platforms[platNumbers].x + 160) &&
+        (platforms[platNumbers].y <= player.y && player.y <= platforms[platNumbers].y + 40)) {
         playerState = platNumbers;
         player.y = platforms[platNumbers].y;
         player.y_v = -player.y_v*0.2;
